@@ -32,9 +32,9 @@ rentings/
 
 ---
 
-## 🚀 Instalación en Synology DS120j
+## 🚀 Instalación en NAS
 
-### 1. Preparar Synology
+### 1. Preparar NAS
 1. Instala **Web Station** desde el Package Center
 2. Instala **PHP 8.x** y **MariaDB 10** desde Package Center
 3. En Web Station → crea un Virtual Host con:
