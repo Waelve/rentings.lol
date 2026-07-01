@@ -1,5 +1,5 @@
 # 🏠 Rentings.lol — Plataforma Inmobiliaria
-### Para Synology NAS DS120j
+### Para NAS
 
 ---
 
@@ -62,7 +62,7 @@ define('SITE_URL', 'http://rentings.lol');
 Copia toda la carpeta `rentings/` a `/volume1/web/rentings/`
 
 ### 5. DNS rentings.lol
-Apunta el registro A de `rentings.lol` a la IP de tu NAS o usa DDNS de Synology.
+Apunta el registro A de `rentings.lol` a la IP de tu NAS o usa DDNS
 
 ---
 
