@@ -1,0 +1,65 @@
+# ============================================================
+#  Rentings.lol — Synology NAS DS120j
+#  Configuración Apache / Web Station
+# ============================================================
+
+Options -Indexes
+DirectoryIndex index.php index.html
+
+# ── URL Rewriting ──
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirigir www a no-www
+    RewriteCond %{HTTP_HOST} ^www\.rentings\.lol [NC]
+    RewriteRule ^(.*)$ http://rentings.lol/$1 [R=301,L]
+
+    # No redirigir archivos/directorios existentes
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Páginas limpias (sin .php)
+    RewriteRule ^propiedad/([0-9]+)/?$ /pages/propiedad.php?id=$1 [QSA,L]
+    RewriteRule ^explorar/?$           /pages/propiedades.php    [QSA,L]
+    RewriteRule ^rentas/?$             /pages/propiedades.php?operacion=renta [QSA,L]
+    RewriteRule ^ventas/?$             /pages/propiedades.php?operacion=venta [QSA,L]
+    RewriteRule ^publicar/?$           /pages/publicar.php       [QSA,L]
+    RewriteRule ^dashboard/?$          /pages/dashboard.php      [L]
+    RewriteRule ^login/?$              /pages/login.php          [L]
+    RewriteRule ^registro/?$           /pages/register.php       [L]
+    RewriteRule ^salir/?$              /pages/logout.php         [L]
+</IfModule>
+
+# ── Seguridad ──
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ── Ocultar archivos sensibles ──
+<FilesMatch "(^\.htaccess|\.env|config\.php|db\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ── Caché de assets estáticos ──
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css               "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/svg+xml          "access plus 1 month"
+    ExpiresByType image/jpeg             "access plus 3 months"
+    ExpiresByType image/png              "access plus 3 months"
+    ExpiresByType image/webp             "access plus 3 months"
+</IfModule>
+
+# ── Compresión GZIP ──
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain application/json
+</IfModule>
+
+# ── Charset ──
+AddDefaultCharset utf-8
