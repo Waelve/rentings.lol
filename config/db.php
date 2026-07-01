@@ -1,12 +1,12 @@
 <?php
 // ============================================================
 //  Rentings.lol — Configuración de Base de Datos
-//  Alojado en Synology NAS DS120j
+//  Alojado en NAS
 // ============================================================
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');   // Cambiar según tu phpMyAdmin
-define('DB_PASS', 'Payiyis97*');      // Cambiar según tu contraseña
+define('DB_USER', 'user');   // Cambiar según tu phpMyAdmin
+define('DB_PASS', 'passwordcontra');      // Cambiar según tu contraseña
 define('DB_NAME', 'rentings_db');
 define('SITE_URL', 'https://rentingslol.techypayl.i234.me');
 define('SITE_NAME', 'Rentings.lol');
