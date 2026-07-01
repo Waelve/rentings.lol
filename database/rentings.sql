@@ -1,6 +1,6 @@
 -- ============================================================
 --  Rentings.lol — Base de Datos MySQL
---  Importar en phpMyAdmin de Synology NAS DS120j
+--  Importar en phpMyAdmin de NAS
 -- ============================================================
 
 CREATE DATABASE IF NOT EXISTS `rentings_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
